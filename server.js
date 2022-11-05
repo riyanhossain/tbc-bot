@@ -41,13 +41,13 @@ bot.onText(/\/buyback/, async (msg, match) => {
     const percent = (Number(res.data.result) / 1000000000000000 / 1000).toFixed(2) || 0;
 
     resp =
-        `Buybacks of $TBC token comes form winning bets and placing the profit on the chart. Tokens that have been bought back are placed in a vault, thereby reducing the effective supply.
+        `Buybacks of $TBC token come from winning bets and placing the profit on the chart. Tokens that have been bought back are then sent to a dead wallet and burnt forever, thereby reducing the effective supply.
 
   ⚫️ BUYBACK STATS ⚫️
 
-  Tokens burnt: ${buyback}
-  Percentage of overall supply: ${percent}% 
-  Total value: $${totalValue}` || "";
+  Tokens Bought Back: ${buyback}
+  Percentage of Overall Supply: ${percent}% 
+  Total Value: $${totalValue}` || "";
 
     // send back the matched "whatever" to the chat
     bot.sendMessage(msg.chat.id, resp);
