@@ -7,13 +7,15 @@ const app = express();
 
 dotenv.config();
 
+app.use(express.static("public"));
+
 // replace the value below with the Telegram token you receive from @BotFather
 const token = process.env.TELEGRAM_TOKEN;
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
 
-// Matches "/echo [whatever]"
+// Matches "/echo"
 bot.onText(/\/price/, async (msg, match) => {
     // 'msg' is the received Message from Telegram
     // 'match' is the result of executing the regexp above on the text content
@@ -53,6 +55,38 @@ bot.onText(/\/buyback/, async (msg, match) => {
     bot.sendMessage(msg.chat.id, resp);
 });
 
+bot.onText(/\/countdown/, async (msg, match) => {
+    //worldcup countdown
+    const countDownDate = new Date("Nov 20, 2022").getTime();
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    bot.sendMessage(
+        msg.chat.id,
+        `🏆 World Cup 2022 Countdown 🏆
+        ${days} days until kicks off!`
+    );
+});
+
+bot.onText(/\/groups/, async (msg, match) => {
+    //worldcup countdown
+
+    bot.sendPhoto(msg.chat.id, `./public/groups.png`, {
+        caption: `🏆 World Cup 2022 Groups 🏆`,
+    });
+});
+bot.onText(/\/schedule/, async (msg, match) => {
+    //worldcup countdown
+
+    bot.sendPhoto(msg.chat.id, `./public/schedule1.png`, {
+        caption: `🏆 World Cup 2022 Schedule 🏆`,
+    });
+});
 // Listen for any kind of message. There are different kinds of
 // messages.
 // bot.on("message", (msg) => {
