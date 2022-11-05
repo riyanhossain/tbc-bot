@@ -43,10 +43,9 @@ bot.onText(/\/buyback/, async (msg, match) => {
     resp =
         `Buybacks of $TBC token comes form winning bets and placing the profit on the chart. Tokens that have been bought back are placed in a vault, thereby reducing the effective supply.
 
-  🔵 BUYBACK STATS 🔵
+  ⚫️ BUYBACK STATS ⚫️
 
-  Number of buybacks: 
-  Tokens bought back: ${buyback}
+  Tokens burnt: ${buyback}
   Percentage of overall supply: ${percent}% 
   Total value: $${totalValue}` || "";
 
