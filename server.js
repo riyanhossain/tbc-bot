@@ -43,7 +43,7 @@ bot.onText(/\/buyback/, async (msg, match) => {
     resp =
         `Buybacks of $TBC token come from winning bets and placing the profit on the chart. Tokens that have been bought back are then sent to a dead wallet and burnt forever, thereby reducing the effective supply.
 
-  ⚫️ BUYBACK STATS ⚫️
+  ◼️🔥 BURN STATS 🔥◼️
 
   Tokens Bought Back: ${buyback}
   Percentage of Overall Supply: ${percent}% 
