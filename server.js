@@ -1,8 +1,14 @@
+const express = require("express");
 const axios = require("axios");
 const TelegramBot = require("node-telegram-bot-api");
+const dotenv = require("dotenv");
+
+const app = express();
+
+dotenv.config();
 
 // replace the value below with the Telegram token you receive from @BotFather
-const token = "5730162874:AAFixU8PirGec4IQFoPvRJ-I8cxPab1k7Ww";
+const token = process.env.TELEGRAM_TOKEN;
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
@@ -18,10 +24,7 @@ bot.onText(/\/price/, async (msg, match) => {
 
   resp = `Price: $${Number(res.data.data.price).toFixed(10)}` || "";
   // send back the matched "whatever" to the chat
-  bot.sendMessage(
-    msg.chat.id,
-    resp,
-  );
+  bot.sendMessage(msg.chat.id, resp);
 });
 
 // Listen for any kind of message. There are different kinds of
@@ -33,3 +36,7 @@ bot.onText(/\/price/, async (msg, match) => {
 //   // send a message to the chat acknowledging receipt of their message
 //   bot.sendMessage(chatId, "Received your message");
 // });
+
+app.listen(process.env.PORT || 5000, () => {
+  console.log("Server is running on port", process.env.PORT || 5000);
+});
