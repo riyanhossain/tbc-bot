@@ -1,0 +1,7 @@
+{
+    "files.autoSave": "afterDelay",
+    "prettier.printWidth": 150,
+    "prettier.singleQuote": false,
+    "prettier.requireConfig": false,
+    "prettier.tabWidth": 4
+}
